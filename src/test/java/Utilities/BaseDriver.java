@@ -10,12 +10,19 @@ import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class BaseDriver {
     private static ThreadLocal<WebDriver> threadDriver = new ThreadLocal<>();
     public static ThreadLocal<String> threadBrowserName = new ThreadLocal<>();
 
     public static void setBrowser(){threadBrowserName.set(ConfigReader.getProperty("browser"));}
+
+    public static void setBrowser(String browser){threadBrowserName.set(browser);}
+
+    public static String getBrowserName(){
+        return threadBrowserName.get();
+    }
 
     public static WebDriver getDriver(){
         if (threadDriver.get()==null){
@@ -54,6 +61,10 @@ public class BaseDriver {
         if (threadDriver.get() != null){
             threadDriver.get().quit();
             threadDriver.remove();
+        }
+
+        if (threadBrowserName != null){
+            threadBrowserName.remove();
         }
     }
 
