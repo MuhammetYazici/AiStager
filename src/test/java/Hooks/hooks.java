@@ -25,6 +25,7 @@ public class hooks {
                             .getCurrentXmlTest()
                             .getParameter("browser");
 
+
             if (browserFromXMl != null){
                 BaseDriver.setBrowser(browserFromXMl);
             }else {
