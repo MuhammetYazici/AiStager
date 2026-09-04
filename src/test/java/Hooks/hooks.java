@@ -13,7 +13,7 @@ import org.testng.Reporter;
 
 
 public class hooks {
-    public Logger logger = LogManager.getLogger(this.getClass());
+    private static final Logger LOGGER = LogManager.getLogger(hooks.class);
 
     @Before
     public void setup(Scenario scenario){
@@ -26,11 +26,18 @@ public class hooks {
                             .getParameter("browser");
 
             if (browserFromXMl != null){
+                BaseDriver.setBrowser(browserFromXMl);
+            }else {
                 BaseDriver.setBrowser();
             }
-        }catch (Exception r){
-            System.out.println(r);
+        }catch (Throwable ex) {                // Throwable : Exception ve Error olarak iki hata dalını da kapsıyor
+            BaseDriver.setBrowser();           // TestNG context yok → config dosyasına düş
         }
+
+        BaseDriver.getDriver();                // Tarayıcıyı aç
+
+        LOGGER.info("Scenario Started: {} | Browser: {}",
+                scenario.getName(), BaseDriver.getBrowserName());
     }
 
     @After
@@ -38,9 +45,13 @@ public class hooks {
         if (scenario.isFailed() && BaseDriver.getDriver() instanceof TakesScreenshot){
             TakesScreenshot ts = (TakesScreenshot) BaseDriver.getDriver();
             byte[] yer = ts.getScreenshotAs(OutputType.BYTES);
-            scenario.attach(yer,"image/png","screenshot");
+            scenario.attach(yer,"image/png",scenario.getName());
+            LOGGER.error("Scenario Failed: {}", scenario.getName());
+        }else {
+            LOGGER.info("Scenario Passed: {}",scenario.getName());
         }
         BaseDriver.quitDriver();
+        LOGGER.info("Driver closed.");
     }
 
 }
