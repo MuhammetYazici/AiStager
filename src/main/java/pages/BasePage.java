@@ -80,4 +80,5 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.isDisplayed(), text);
     }
+
 }
