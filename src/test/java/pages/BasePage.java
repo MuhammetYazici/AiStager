@@ -44,6 +44,7 @@ public class BasePage {
                 }
             }
         }
+
     }
 
     public void sendKeysToElement(final WebElement element, final String text) {
