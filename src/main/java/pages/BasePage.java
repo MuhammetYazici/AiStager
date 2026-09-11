@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.io.ObjectInputFilter;
 import java.time.Duration;
 
 public class BasePage {
@@ -79,6 +81,12 @@ public class BasePage {
     public void verifyDisplayed(final WebElement element, final String text) {
         wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.isDisplayed(), text);
+    }
+
+    public void resolveDynamicValue(String value){
+        if (value.equalsIgnoreCase("fakerName")){
+
+        }
     }
 
 }
