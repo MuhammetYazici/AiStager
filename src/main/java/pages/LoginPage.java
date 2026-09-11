@@ -25,6 +25,8 @@ public class LoginPage extends BasePage {
     WebElement girisYapBtn;
     @FindBy(css = "[data-testid='user-avatar']")
     WebElement userAvatar;
+    @FindBy(xpath = "//a[text()='Kayıt ol']")
+    WebElement registerButton;
 
     public boolean isAvatarVisible() {
         try {
@@ -35,6 +37,7 @@ public class LoginPage extends BasePage {
             return false;
         }
     }
+
     @FindBy(css = "[data-testid='button-accept-all']")
     WebElement cerezler;
     // google ile devam et eklenecek.
@@ -52,5 +55,7 @@ public class LoginPage extends BasePage {
     public void verifiyAvatar(){verifyDisplayed(userAvatar,"avatar gorundu");}
 
     public void cerezlerKabul(){clickElement(cerezler);}
+
+    public void registerButton(){clickElement(registerButton);}
 
 }
