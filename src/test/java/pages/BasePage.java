@@ -1,5 +1,6 @@
 package pages;
 
+import Utilities.ConfigReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.io.ObjectInputFilter;
 import java.time.Duration;
 
 public class BasePage {
@@ -85,7 +85,13 @@ public class BasePage {
 
     public void resolveDynamicValue(String value){
         if (value.equalsIgnoreCase("fakerName")){
-
+            ConfigReader.getRandomEmail();
+        } else if (value.equalsIgnoreCase("fakerPassword")) {
+            ConfigReader.getRandomPassword();
+        } else if (value.equalsIgnoreCase("fakerGenerateEmail")) {
+            ConfigReader.getGenerateEmail();
+        } else if (value.equalsIgnoreCase("fakerGeneratePassword")) {
+            ConfigReader.getGeneratePassword();
         }
     }
 
