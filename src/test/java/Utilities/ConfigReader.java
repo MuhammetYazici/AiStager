@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class ConfigReader {
     private static Properties properties = new Properties();
-    private static Faker faker;
+    private static Faker faker = new Faker();
     private static final String configFilePath = "src/test/resources/configuration.properties";
     private static String dynmicEmail;
     private static String dynmicPassword;
@@ -31,7 +31,7 @@ public class ConfigReader {
     }
 
     public static String getRandomPassword(){
-        dynmicPassword =  faker.internet().password();
+        dynmicPassword =  faker.internet().password(8,16,true,true,true);
         return dynmicPassword;
     }
 

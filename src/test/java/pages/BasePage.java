@@ -83,16 +83,20 @@ public class BasePage {
         Assert.assertTrue(element.isDisplayed(), text);
     }
 
-    public void resolveDynamicValue(String value){
-        if (value.equalsIgnoreCase("fakerName")){
-            ConfigReader.getRandomEmail();
+    public String resolveDynamicValue(String value){
+        String key = "";
+        if (value.equalsIgnoreCase("fakerEmail")){
+            key = ConfigReader.getRandomEmail();
         } else if (value.equalsIgnoreCase("fakerPassword")) {
-            ConfigReader.getRandomPassword();
+            key = ConfigReader.getRandomPassword();
         } else if (value.equalsIgnoreCase("fakerGenerateEmail")) {
-            ConfigReader.getGenerateEmail();
+            key = ConfigReader.getGenerateEmail();
         } else if (value.equalsIgnoreCase("fakerGeneratePassword")) {
-            ConfigReader.getGeneratePassword();
+            key = ConfigReader.getGeneratePassword();
+        }else {
+            return value;
         }
+        return key;
     }
 
 }
