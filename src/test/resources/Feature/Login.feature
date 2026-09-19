@@ -4,18 +4,32 @@ Feature: AiStager User Registration And Login
   Scenario: The user registers on the AiStager site.
     Given The user clicks the Log in button on the homepage.
     When The user clicks the register button on the login page.
+    And The user clicks the cookie.
     Then On the registration page,enter a valid email and password.
-      | fakerEmail |
-      | fakerPassword |
-      | fakerGeneratePassword |
+      | yzcmm61+mobile81@gmail.com |
+      | fakerPassword              |
+      | fakerGeneratePassword      |
     And The user checks the terms of acceptance box.
     Then The user clicks the Create an account button.
-    And The user must verify the Verify your email text.
+    Then The user should see the verify your email message.
 
   @Regression
   Scenario: The user login on the AiStager webSite.
     Given The user clicks the Log in button on the homepage.
+    And The user clicks the cookie.
     When On the login page,enter a valid email and password.
-      | fakerGenerateEmail |
-      | fakerGeneratePassword |
+      | yzcmm61+mobile800@gmail.com |
+      | Aistagstaj1234?.            |
     And The user clicks the button.
+    Then should display the user avatar
+
+  @Smoke
+  Scenario: I forgot my Aistager website password.
+    Given The user clicks the Log in button on the homepage.
+    When The user clicks forgot password button.
+    And The user enters a registered email address.
+      | yzcmm61+mobile81@gmail.com |
+    And The user clicks the send email button.
+    Then user should see  message
+
+
