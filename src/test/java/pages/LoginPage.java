@@ -27,6 +27,8 @@ public class LoginPage extends BasePage {
     WebElement userAvatar;
     @FindBy(xpath = "//a[text()='Kayıt ol']")
     WebElement registerButton;
+    @FindBy(xpath = "//div[@class='text-center mb-7']/following-sibling::div[1]//span")
+    WebElement message;
 
     public boolean isAvatarVisible() {
         try {
@@ -57,5 +59,6 @@ public class LoginPage extends BasePage {
     public void cerezlerKabul(){clickElement(cerezler);}
 
     public void registerButton(){clickElement(registerButton);}
+
 
 }

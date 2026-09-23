@@ -1,6 +1,7 @@
 package Hooks;
 
 import Utilities.BaseDriver;
+import Utilities.ConfigReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -17,6 +18,7 @@ public class hooks {
 
     @Before
     public void setup(Scenario scenario){
+
         try{
             String browserFromXMl =
                     Reporter
@@ -35,7 +37,7 @@ public class hooks {
             BaseDriver.setBrowser();           // TestNG context yok → config dosyasına düş
         }
 
-        BaseDriver.getDriver();                // Tarayıcıyı aç
+        BaseDriver.getDriver().get(ConfigReader.getProperty("url"));                // Tarayıcıyı aç
 
         LOGGER.info("Scenario Started: {} | Browser: {}",
                 scenario.getName(), BaseDriver.getBrowserName());
