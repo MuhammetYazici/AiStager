@@ -1,9 +1,9 @@
-package StepDefinations;
+package StepDefinations.loginAndRegisterStepler;
 
 import Utilities.BaseDriver;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
-import pages.RegisterPage;
+import pages.registerAndLoginPage.RegisterPage;
 
 import java.util.List;
 

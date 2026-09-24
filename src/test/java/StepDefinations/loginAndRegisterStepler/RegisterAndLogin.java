@@ -1,4 +1,4 @@
-package StepDefinations;
+package StepDefinations.loginAndRegisterStepler;
 
 import Utilities.BaseDriver;
 import io.cucumber.datatable.DataTable;
@@ -6,12 +6,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.testng.Assert;
-import pages.BasePage;
-import pages.LoginPage;
-import pages.RegisterPage;
+import pages.registerAndLoginPage.LoginPage;
+import pages.registerAndLoginPage.RegisterPage;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 public class RegisterAndLogin {
@@ -24,6 +21,7 @@ public class RegisterAndLogin {
         loginPage = new LoginPage(BaseDriver.getDriver());
         registerPage = new RegisterPage(BaseDriver.getDriver());
         loginPage.clickLoginBtn();
+
     }
 
     @When("The user clicks the register button on the login page.")

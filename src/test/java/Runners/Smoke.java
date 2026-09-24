@@ -6,7 +6,9 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(features = "src/test/resources/Feature",
         tags = "@Smoke",
         glue = {"StepDefinations", "Hooks"},
-        plugin = {"pretty", "html:target/cucumber-reports.html"})
+        plugin = {"pretty", "html:target/cucumber-reports.html",
+                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 
 public class Smoke extends AbstractTestNGCucumberTests {
 }
