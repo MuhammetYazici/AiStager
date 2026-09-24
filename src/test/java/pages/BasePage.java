@@ -84,19 +84,21 @@ public class BasePage {
     }
 
     public String resolveDynamicValue(String value){
-        String key = "";
+
         if (value.equalsIgnoreCase("fakerEmail")){
-            key = ConfigReader.getRandomEmail();
+            value = ConfigReader.getRandomEmail();
         } else if (value.equalsIgnoreCase("fakerPassword")) {
-            key = ConfigReader.getRandomPassword();
+            value = ConfigReader.getRandomPassword();
         } else if (value.equalsIgnoreCase("fakerGenerateEmail")) {
-            key = ConfigReader.getGenerateEmail();
+            value = ConfigReader.getGenerateEmail();
         } else if (value.equalsIgnoreCase("fakerGeneratePassword")) {
-            key = ConfigReader.getGeneratePassword();
-        }else {
-            return value;
+            value = ConfigReader.getGeneratePassword();
+        } else if (value.equalsIgnoreCase("testEmail")) {
+            value = ConfigReader.getProperty("testEmail");
+        } else if (value.equalsIgnoreCase("testPassword")) {
+            value = ConfigReader.getProperty("testPassword");
         }
-        return key;
+        return value;
     }
 
 }
