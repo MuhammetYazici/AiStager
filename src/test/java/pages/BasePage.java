@@ -16,8 +16,8 @@ import java.time.Duration;
 
 public class BasePage {
     protected final Logger LOGGER = LogManager.getLogger(this.getClass());
-    WebDriver driver;
-    WebDriverWait wait;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
 
     public BasePage(final WebDriver driver) {
         this.driver = driver;
