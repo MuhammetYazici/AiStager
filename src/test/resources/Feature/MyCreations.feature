@@ -4,10 +4,11 @@ Feature: My Creations
     Given The user clicks the Log in button on the homepage.
     And The user clicks the cookie.
     When On the login page,enter a valid email and password.
-      | g.cibisoglu92+mobile5@gmail.com |
-      | Testzqxwce.2026                 |
+      | testEmail    |
+      | testPassword |
     And The user clicks the button.
     Then should display the user avatar
+    And the user switches the language to English
 
   @Regression
   Scenario: My Creations - viewing photo and video generations
