@@ -30,6 +30,8 @@ public class PricingPage extends BasePage {
     List<WebElement> languageSwitchers;
     @FindBy(css = "[data-testid='option-language-tr']")
     List<WebElement> turkishOptions;
+    @FindBy(css = "[data-testid='option-language-en']")
+    List<WebElement> englishOptions;
     @FindBy(css = "[data-testid='hero-title']")
     WebElement heroTitle;
     @FindBy(css = "[data-testid='text-plan-name-standard']")
@@ -120,6 +122,21 @@ public class PricingPage extends BasePage {
         turkish.click();
         waitFor(PAGE_TIMEOUT).until(ExpectedConditions.urlContains("/tr/"));
         waitFor(PAGE_TIMEOUT).until(ExpectedConditions.visibilityOf(standardName));
+    }
+    public void switchLanguageToEnglish() {
+        if (isOnEnglishSite()) {
+            return;
+        }
+        new Actions(driver).moveToElement(firstVisible(languageSwitchers)).perform();
+        WebElement english = waitFor(ELEMENT_TIMEOUT).until(
+                d -> englishOptions.stream().filter(WebElement::isDisplayed).findFirst().orElse(null));
+        english.click();
+        waitFor(PAGE_TIMEOUT).until(d -> isOnEnglishSite());
+        waitFor(PAGE_TIMEOUT).until(d -> languageSwitchers.stream()
+                .anyMatch(e -> e.isDisplayed() && e.getText().trim().equals("EN")));
+    }
+    public boolean isOnEnglishSite() {
+        return driver.getCurrentUrl().matches("https?://[^/]+/en([/?#].*)?");
     }
     private WebElement firstVisible(List<WebElement> elements) {
         return elements.stream()

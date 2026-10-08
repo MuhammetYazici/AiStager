@@ -54,6 +54,13 @@ public class PricingSteps {
         pricingPage.switchLanguageToTurkish();
     }
 
+    @When("the user switches the language to English")
+    public void theUserSwitchesTheLanguageToEnglish() {
+        LOGGER.info("the user switches the language to English");
+        pricingPage.switchLanguageToEnglish();
+        Assert.assertTrue(pricingPage.isOnEnglishSite(), "Site did not switch to English");
+    }
+
     @Then("the hero title is {string}")
     public void theHeroTitleIs(String expected) {
         LOGGER.info("the hero title is {}", expected);
