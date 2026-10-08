@@ -26,11 +26,11 @@ public class BaseDriver {
 
     public static WebDriver getDriver(){
         if (threadDriver.get()==null){
-            if (threadBrowserName.get()==null){
+            if (getBrowserName()==null){
                 threadBrowserName.set("chrome");
             }
 
-            switch (threadBrowserName.get().toLowerCase()){
+            switch (getBrowserName().toLowerCase()){
                 case "firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);

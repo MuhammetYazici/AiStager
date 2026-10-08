@@ -1,6 +1,5 @@
 package Utilities;
 
-import org.apache.commons.math3.fraction.ProperBigFractionFormat;
 import net.datafaker.Faker;
 
 import java.io.FileInputStream;
