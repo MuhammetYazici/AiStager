@@ -61,6 +61,7 @@ public class RegisterPage extends BasePage {
 
     public boolean verifyMessage(){
         try {
+            WebDriver driver = null;
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             // Görünür olana kadar bekle:
             wait.until(ExpectedConditions.visibilityOf(message));

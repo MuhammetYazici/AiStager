@@ -101,4 +101,17 @@ public class BasePage {
         return value;
     }
 
+    public void hoverElements(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            new Actions(driver)
+                    .moveToElement(element)
+                    .build()
+                    .perform();
+            LOGGER.info("Text sent to element with Actions");
+        }catch (Exception e){
+            throw new RuntimeException("Hover İşlemi Başarısız Oldu.");
+        }
+    }
+
 }

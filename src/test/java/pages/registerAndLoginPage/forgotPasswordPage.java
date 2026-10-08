@@ -26,6 +26,7 @@ public class forgotPasswordPage extends BasePage {
 
     public boolean verifyDisplayed(){
         try {
+            WebDriver driver=null;
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
             // Görünür olana kadar bekle:
             wait.until(ExpectedConditions.visibilityOf(dogrulamaMessage));
